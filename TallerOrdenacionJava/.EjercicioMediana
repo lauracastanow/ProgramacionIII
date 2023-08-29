@@ -1,1 +1,34 @@
+//EJERCICIO 92
+package metodoordenacion;
+import java.util.Scanner;
 
+public class EjercicioMediana {
+   public static void main(String[] args) {
+        Scanner numMedia = new Scanner (System.in);
+        System.out.print("Ingrese la cantidad de números que desea para calcular la mediana: ");
+        int numeros =numMedia.nextInt();
+        
+        Scanner cantidad = new Scanner(System.in);
+        double vector[] = new double [numeros];
+        for(int x=0; x<numeros; x++){
+            System.out.println("Ingrese la cifra "+(x+1)+":");
+            vector[x] = cantidad.nextDouble();
+        }
+        
+        System.out.println("Los números para calcular la mediana son: ");
+        for(int y=0; y<numeros; y++){
+            System.out.print(vector[y]+" "); 
+        }
+
+        double suma=0;
+        for (int i=0; i<numeros; i++){
+            suma= suma + vector[i];
+        }
+        System.out.println("  Total: "+suma);
+        double media;
+        media = (suma+1)/2; 
+        System.out.println("El valor de la mediana del Vector " +numeros+ " Va a presentar un valor igual a: "+media); 
+        
+        
+   }
+} 
