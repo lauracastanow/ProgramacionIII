@@ -1,0 +1,66 @@
+//EJERCICIO 95
+package metodoordenacion;
+
+public class SecuencialBinaria {
+   public static void main(String[] args) {
+        int  minrango= 0,maxrango = 2000 -1, mitad = 0, secundar;
+        int listaA [] = new int [2000];
+        for (int x= 0; x < 2000; x++){
+            listaA [x] = (int) (Math.random()*1999);
+        }
+        for(int y=0; y < 2000; y++){
+            int valormin = y;
+            for(int i= y+1; i < 2000; i++){
+                if(listaA[i]<listaA[valormin]){
+                    valormin=i;
+                }
+            }
+            secundar=listaA[y];
+            listaA[y] = listaA[valormin];
+            listaA[valormin] = secundar;
+        }
+         int listaB [] = new int [500];
+         for(int x=0; x < 500; x++){
+             listaB[x]=(int) (Math.random()*1999);
+         }
+         
+        boolean momentum = false;
+        long DatoInicialdeTiempo = System.nanoTime(); 
+        for(int b : listaB) {
+            while(minrango <= maxrango){
+                mitad = (minrango + maxrango)/2;
+                if(listaA[mitad] == b){
+                    break;
+                }
+                else{
+                    if(b > listaA[mitad]){
+                        maxrango = mitad + 1; 
+                    }
+                    else{
+                        minrango = mitad - 1; 
+                    }
+                }
+            }
+        }
+        long DatoFinaldeTiempo = System.nanoTime(); 
+        long DatoTiempoenBinario = DatoFinaldeTiempo - DatoInicialdeTiempo;
+        double DatoBinarioenSegundos = DatoTiempoenBinario * Math.pow(10, -9);
+
+   
+         DatoInicialdeTiempo = System.nanoTime();
+        for(int b : listaB) {
+            for(int x=0; x < 2000; x++){
+                if(listaA[x]==b){
+                    momentum=true;
+                    break;
+                }
+            }
+        }
+        DatoFinaldeTiempo = System.nanoTime();
+        long DatoTiempoenSecuencial = (DatoFinaldeTiempo - DatoInicialdeTiempo);
+        double DatoSecuencialenSegundos = DatoTiempoenSecuencial * Math.pow(10, -9);
+        
+        System.out.println("El tiempo empleado en la búsqueda secuencial fue de " +DatoSecuencialenSegundos+" Segundos");
+        System.out.println("El tiempo empleado en la búsqueda secuencial fue de "+DatoBinarioenSegundos+" Segundos");  
+}
+} 
