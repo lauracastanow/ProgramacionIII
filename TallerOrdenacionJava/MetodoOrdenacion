@@ -1,1 +1,36 @@
+//EJERCICIO 91
+package metodoordenacion;
+import java.util.Scanner;
 
+
+public class MetodoOrdenacion {
+    public static void main(String[] args) {
+       int cantidad;
+       Scanner entranumer=new Scanner(System.in);
+       
+       System.out.print("Ingrese la cantidad de numeros que desea organizar: ");
+       cantidad = entranumer.nextInt();
+       int[] Arreglo = new int[cantidad];
+       for (int x=0;x<cantidad;x++){
+           System.out.print("Ingrese la cifra "+(x+1)+" que quiere ordenar:");
+           Arreglo[x] = entranumer.nextInt();
+       }
+       System.out.println("\nlos numeros que eligió organizar son: ");
+       for(int y=0;y<cantidad;y++){
+           System.out.print(Arreglo[y]+" ");
+       }
+       for (int m=0;m<Arreglo.length;m++){
+           for(int n=0;n<Arreglo.length && n!=m;n++){
+               if(Arreglo[m]<Arreglo[n]){
+                   int aux=Arreglo[m];
+                   Arreglo[m]=Arreglo[n];
+                   Arreglo[n]=aux;
+               }
+           }
+        }
+        System.out.println("\n el orden asendente de los elementos es:");
+         for(int i = 0; i<cantidad; i++){
+            System.out.print(Arreglo[i]+" ");
+        }
+    }
+}
