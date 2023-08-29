@@ -1,0 +1,30 @@
+//EJERCICIO 93
+package metodoordenacion;
+import java.util.Scanner;
+
+public class ProblemaEscolar {
+   public static void main (String[] args){
+        int numero;
+        double promedio, s=0; 
+        Scanner entrada= new Scanner(System.in);
+        System.out.print("Ingrese el numero de alumnos que hay en el primer curso de bachillerato: ");
+        numero=entrada.nextInt(); 
+        //[5] es por la cantidad de asignaturas propuestas en el punto 93
+        double[][]materias= new double[numero][5];
+        for(int x=0; x<numero ;x++){
+             System.out.println(" ");
+            for(int y=0; y<5; y++){
+                System.out.print("Ingrese la "+(y+1)+" nota del alumno número "+(x+1)+": ");
+                materias[x][y]=entrada.nextDouble();
+            }
+        }
+        for(int x=0; x<numero; x++){
+            for(int y=0;y<5;y++){
+                s=s+materias[x][y];
+            }
+            promedio=s/materias[0].length;
+            System.out.println("El promedio que tiene el alumno número "+(x+1)+" es: "+promedio);
+            s=0;
+        }
+    }
+} 
